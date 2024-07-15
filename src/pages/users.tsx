@@ -269,7 +269,7 @@ export default function Users({ }: Props) {
                     <Form.Item<FieldType> name='gender' label='Giới tính' rules={[{ required: true, message: 'Giới tính là bắt buộc!' }]} hasFeedback>
                         <Select
                             options={[
-                                { label: 'Nam', value: 'Nữ' },
+                                { label: 'Nam', value: 'Nam' },
                                 { label: 'Nữ', value: 'Nữ' },
                             ]}
                         />
