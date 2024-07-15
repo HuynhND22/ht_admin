@@ -1,0 +1,42 @@
+/* Layout.module.css */
+.container {
+    padding: 30px;
+}
+
+.container nav {
+    background-color: #162354;
+    padding: 10px;
+    display: flex;
+ 
+    align-items: center;
+    justify-content: space;
+}
+
+.container nav h1 {
+ 
+}
+
+.item {
+    display: flex;
+    gap: 10px;
+}
+
+.item a {
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+
+
+.item a:focus, /* Áp dụng màu khi được chọn */
+.item a:active { /* Áp dụng màu khi đang active */
+    color:rgba(110, 166, 32); /* Màu khác khi được chọn */
+}
+h1 {
+    color: rgb(33, 51, 123);
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
