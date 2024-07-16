@@ -323,7 +323,7 @@ export default function Posts({ }: Props) {
 
   const checkNameUnique = debounce( async(cb:any, value: string, ignore?:string) => {
     try{
-      await axiosClient.get(`/post/check/unique?field=name&value=${value}&ignore=${ignore}`, {
+      await axiosClient.get(`/posts/check/unique?field=name&value=${value}&ignore=${ignore}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
