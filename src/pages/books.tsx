@@ -320,9 +320,14 @@ const Books: React.FC = () => {
           </Form.Item>
           <Form.Item label="Danh mục" labelCol={{ span: 6 }} name="categoryId" rules={[{required:true, message: 'Danh mục là bắt buộc!'}]} hasFeedback>
             <Select>
-              {
+               {
               categories && categories?.map((value:any)=> {
-                if (value.parentId) return <Option value={value.categoryId}>{value.parent?.name} {'>'} {value.name}</Option>
+                console.log(value);  
+                if (value.children) {
+                   return value.children.map((item:any) => {
+                     return <Option value={item.categoryId}>{value.name} {'>'} {item.name}</Option>
+                   })
+                }
               })
             }
             </Select>
