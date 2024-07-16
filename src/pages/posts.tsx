@@ -115,7 +115,7 @@ export default function Posts({ }: Props) {
     })
     formData.append('content', content)
     try {
-      const response = await axiosClient.post('/post/create', formData,{
+      const response = await axiosClient.post('/posts/create', formData,{
          headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -144,7 +144,7 @@ export default function Posts({ }: Props) {
     formData.append('content', contentUpdate)
 
     try {
-      await axiosClient.patch(`/post/update/${selectedPost.postId}`, formData, {
+      await axiosClient.patch(`/posts/update/${selectedPost.postId}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -159,7 +159,7 @@ export default function Posts({ }: Props) {
 
   const handleRemove = async(postId:number) =>{
     try {
-      await axiosClient.delete(`/post/remove/${postId}`, {
+      await axiosClient.delete(`/posts/remove/${postId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -173,7 +173,7 @@ export default function Posts({ }: Props) {
 
     const handleDelete = async (postId: number) => {
     try {
-      await axiosClient.delete(`/post/delete/${postId}`, {
+      await axiosClient.delete(`/posts/delete/${postId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -188,7 +188,7 @@ export default function Posts({ }: Props) {
 
   const handleRestore  = async (categoryId: number) => {
     try {
-      await axiosClient.post(`/post/restore/${categoryId}`, {
+      await axiosClient.post(`/posts/restore/${categoryId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -203,7 +203,7 @@ export default function Posts({ }: Props) {
 
   const onDelete = async (postId: number) => {
     try {
-      await axiosClient.delete(`/post/remove${postId}`, {
+      await axiosClient.delete(`/posts/remove${postId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
