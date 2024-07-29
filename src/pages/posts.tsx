@@ -53,6 +53,7 @@ export default function Posts({}: Props) {
   const [updateForm] = Form.useForm();
   const [file, setFile] = React.useState([]);
   const [deleted, setDeleted] = React.useState("all");
+  const [waitting, setWaitting] = React.useState<boolean>(false);
 
   const [previewOpen, setPreviewOpen] = React.useState(false);
   const [previewImage, setPreviewImage] = React.useState("");
@@ -128,6 +129,7 @@ export default function Posts({}: Props) {
   }, [deleted]);
 
   const onFinish = async (values: any) => {
+    setWaitting(true);
     const formData: any = new FormData();
     if (fileList) {
       console.log(fileList);
@@ -151,15 +153,20 @@ export default function Posts({}: Props) {
         },
       });
       getPost();
+      setContent(null);
       createForm.resetFields();
       setFileList([]);
       message.success("Thêm thành công!");
     } catch (error) {
+      message.error("Thêm thất bại!");
       console.log("Error:", error);
+    } finally {
+      setWaitting(false);
     }
   };
 
   const onUpdate = async (values: any) => {
+    setWaitting(true);
     const formData: any = new FormData();
     fileListUpdate.map((value) => {
       formData.append("image", value.originFileObj);
@@ -187,6 +194,8 @@ export default function Posts({}: Props) {
       message.success("Cập nhật thành công!");
     } catch (error) {
       console.log("Error:", error);
+    } finally {
+      setWaitting(false);
     }
   };
 
@@ -495,7 +504,7 @@ export default function Posts({}: Props) {
             />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={waitting}>
               Thêm mới
             </Button>
           </Form.Item>
@@ -529,6 +538,7 @@ export default function Posts({}: Props) {
         title="Chỉnh sửa bài đăng"
         open={selectedPost}
         okText="Cập nhật"
+        confirmLoading={waitting}
         cancelText="Huỷ"
         onOk={() => {
           updateForm.submit();
