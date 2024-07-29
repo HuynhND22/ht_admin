@@ -263,7 +263,7 @@ export default function Posts({}: Props) {
       render: (text: string, record: any, index: number) => {
         return (
           <Image
-            src={process.env.REACT_APP_API_BASE_URL + "/" + record.cover}
+            src={process.env.REACT_APP_API_PUBLIC_BUCKET + "/" + record.cover}
             fallback={process.env.REACT_APP_API_BASE_URL + "/ImgError.png"}
           />
         );
@@ -327,7 +327,7 @@ export default function Posts({}: Props) {
                           name: record.cover?.split("-").pop(),
                           status: "done",
                           url:
-                            process.env.REACT_APP_API_BASE_URL +
+                            process.env.REACT_APP_API_PUBLIC_BUCKET +
                             "/" +
                             record.cover,
                         },
