@@ -8,11 +8,8 @@ import {
   Popconfirm,
   message,
   Modal,
-  InputNumber,
   Select,
   Upload,
-  DatePicker,
-  Divider,
   Image,
   GetProp,
   UploadFile,
@@ -25,14 +22,10 @@ import React from "react";
 import {
   DeleteOutlined,
   EditOutlined,
-  UploadOutlined,
-  MinusCircleOutlined,
   PlusOutlined,
   QuestionCircleOutlined,
   UndoOutlined,
 } from "@ant-design/icons";
-import numeral from "numeral";
-import axios from "axios";
 import axiosClient from "../configs/axiosClient";
 import FormData from "form-data";
 import { debounce } from "ahooks/es/utils/lodash-polyfill";
@@ -93,8 +86,6 @@ export default function Posts({}: Props) {
       <div style={{ marginTop: 8 }}>Upload</div>
     </button>
   );
-
-  const fileListMerge = fileListUpdate.concat(fileList);
 
   const getPost = async () => {
     try {
