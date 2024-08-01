@@ -12,7 +12,7 @@ class UploadAdapter {
       try {
         const file:any = await this.loader.file;
         const formData = new FormData();
-        formData.append('images', file);
+        formData.append('image', file);
 
         const response = await axiosClient.post(
           `/uploads/posts`,
@@ -24,8 +24,9 @@ class UploadAdapter {
             }
           }
         );
+        console.log(response.data);	
         return {
-          default: response.data[0].url
+          default: response.data.url
         };
 
       } catch (error) {

@@ -72,7 +72,6 @@ export default function Posts({}: Props) {
 
   const handleChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(newFileList);
   };
   const handleChangeUpdate: UploadProps["onChange"] = ({
     fileList: newFileList,
@@ -123,14 +122,12 @@ export default function Posts({}: Props) {
     setWaitting(true);
     const formData: any = new FormData();
     if (fileList) {
-      console.log(fileList);
       fileList.map((value) => {
         formData.append("image", value.originFileObj);
       });
     }
 
     Object.entries(values).forEach(([key, value]: any) => {
-      console.log("key ", key, "value ", value);
       if (value) {
         formData.append(key, JSON.stringify(value));
       }
@@ -163,7 +160,6 @@ export default function Posts({}: Props) {
       formData.append("image", value.originFileObj);
     });
     Object.entries(values).forEach(([key, value]: any) => {
-      console.log("key ", key, "value ", value);
       if (value) {
         formData.append(key, JSON.stringify(value));
       }
@@ -319,7 +315,6 @@ export default function Posts({}: Props) {
                   onClick={() => {
                     setSelectedPost(record);
                     setFileList([]);
-                    console.log(record.cover);
                     if (record.cover) {
                       setFileListUpdate([
                         {
@@ -430,7 +425,6 @@ export default function Posts({}: Props) {
             <Select>
               {categories &&
                 categories?.map((value: any) => {
-                  console.log(value);
                   if (value.children) {
                     return value.children.map((item: any) => {
                       return (
@@ -490,7 +484,6 @@ export default function Posts({}: Props) {
               onChange={(event, editor) => {
                 const data = editor.getData();
                 setContent(data);
-                console.log("Editor data:", data);
               }}
             />
           </Form.Item>
@@ -573,7 +566,6 @@ export default function Posts({}: Props) {
             <Select>
               {categories &&
                 categories?.map((value: any) => {
-                  console.log(value);
                   if (value.children) {
                     return value.children.map((item: any) => {
                       return (
@@ -629,11 +621,13 @@ export default function Posts({}: Props) {
               data={contentUpdate}
               config={{
                 extraPlugins: [uploadAdapterPlugin],
+                mediaEmbed: {
+                  previewsInData: true,
+                },
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
                 setContentUpdate(data);
-                console.log("Editor data:", data);
               }}
             />
           </Form.Item>
