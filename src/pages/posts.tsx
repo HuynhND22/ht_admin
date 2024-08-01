@@ -582,10 +582,16 @@ export default function Posts({}: Props) {
             <Select>
               {categories &&
                 categories?.map((value: any) => {
-                  if (value.parentId)
-                    return (
-                      <Option value={value.categoryId}>{value.name}</Option>
-                    );
+                  console.log(value);
+                  if (value.children) {
+                    return value.children.map((item: any) => {
+                      return (
+                        <Option value={item.categoryId}>
+                          {value.name} {">"} {item.name}
+                        </Option>
+                      );
+                    });
+                  }
                 })}
             </Select>
           </Form.Item>
