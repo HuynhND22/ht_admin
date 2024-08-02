@@ -480,6 +480,9 @@ export default function Posts({}: Props) {
               data={content}
               config={{
                 extraPlugins: [uploadAdapterPlugin],
+                mediaEmbed: {
+                  previewsInData: true,
+                },
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
